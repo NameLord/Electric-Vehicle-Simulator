@@ -1,0 +1,18 @@
+# Share-code paste area for the in-game garage.
+#
+# SDL clipboard access is not available on every platform (it needs a working
+# window manager, and it is unavailable on headless or DRM/KMS setups). When the
+# clipboard has nothing to offer, the garage reads this file instead.
+#
+# To import a build:
+#   1. paste the share code (the single line starting with "EVSG1.") below
+#   2. press I in the garage
+#
+# Lines starting with # are ignored, so these instructions are safe to leave in
+# place. The file may be empty, absent, or contain only comments; all three mean
+# "nothing to import".
+#
+# Example (abridged - a real code is one uninterrupted line of about 2.4 kB):
+#
+# EVSG1.eyJidWlsZCI6eyJjaGVtaXN0cnkiOiJMaUZlUE80IiwibW90b3JfaWQiOiJwbXNtLTUwa3ci
+# LCJwYXJhbGxlbCI6NCwic2VyaWVzIjo5NiwiLi4uIjoxfX0=

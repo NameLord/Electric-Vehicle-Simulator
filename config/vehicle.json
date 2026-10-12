@@ -1,0 +1,72 @@
+{
+  "_about": "Chassis / tire / drivetrain / steering parameters for the two-track vehicle model. Everything the Vehicle physics uses comes from here so that no magic numbers live in code.",
+  "chassis": {
+    "mass_kg": 1250.0,
+    "yaw_inertia_kg_m2": 2100.0,
+    "cg_height_m": 0.52,
+    "wheelbase_m": 2.70,
+    "cg_to_front_axle_m": 1.25,
+    "cg_to_rear_axle_m": 1.45,
+    "track_width_front_m": 1.55,
+    "track_width_rear_m": 1.55,
+    "frontal_area_m2": 2.2,
+    "drag_coefficient": 0.3,
+    "air_density_kg_m3": 1.225
+  },
+  "wheels": {
+    "count": 4,
+    "radius_m": 0.31,
+    "inertia_kg_m2": 1.4,
+    "rolling_resistance_coeff": 0.012,
+    "driven_axle": "rear",
+    "front_brake_bias": 0.62,
+    "handbrake_torque_Nm_per_wheel": 1600.0,
+    "brake_distribution": "dynamic",
+    "max_brake_grip_utilisation": 0.92,
+    "min_front_brake_bias": 0.45,
+    "max_front_brake_bias": 0.85,
+    "_todo": "front_brake_bias is the static fallback used when brake_distribution is 'fixed'. With 'dynamic' the pedal is split in proportion to axle load (EBD) and the total is capped at max_brake_grip_utilisation of the tire grip budget, so the friction brakes can never lock the wheels. The handbrake is deliberately not capped."
+  },
+  "tires": {
+    "cornering_stiffness_N_per_rad": 35000.0,
+    "longitudinal_stiffness_N_per_slip": 50000.0,
+    "mu_base": 1.05,
+    "load_sensitivity_per_kN": 0.035,
+    "fz_reference_N": 3000.0,
+    "mu_min": 0.35,
+    "handbrake_lat_mu_factor": 0.4,
+    "slip_eps_m_s": 0.5,
+    "sliding_slip_threshold": 0.2,
+    "catastrophic_slip_threshold": 0.5,
+    "low_speed_sliding_kmh": 10.0,
+    "slip_ratio_limit": 1.0,
+    "rear_long_grip_bias": 1.0,
+    "_todo": "Stiffness values are Pacejka-linearised placeholders; verify on a skidpad or replace with a full Pacejka model. sliding_slip_threshold is the combined-slip magnitude that counts as sliding; below low_speed_sliding_kmh the threshold rises to catastrophic_slip_threshold so slow manoeuvring cannot false-trigger."
+  },
+  "drivetrain": {
+    "gear_ratio": 9.0,
+    "final_drive_efficiency": 0.94,
+    "max_friction_brake_torque_Nm_per_wheel": 1400.0,
+    "traction_control": true,
+    "traction_control_slip_target": 0.15,
+    "traction_control_min_scale": 0.2,
+    "traction_control_engage_slip": 0.18,
+    "traction_control_release_slip": 0.08,
+    "traction_control_release_hold": 5,
+    "traction_control_recovery_rate": 0.02
+  },
+  "steering": {
+    "max_steer_angle_rad": 0.52,
+    "speed_sensitive_ref_m_s": 22.0,
+    "speed_sensitive_min_factor": 0.35,
+    "steer_rate_rad_s": 3.5
+  },
+  "physics": {
+    "substep_hz": 120.0,
+    "wheel_substeps": 16,
+    "soc_floor": 0.05,
+    "ambient_temp_C": 25.0,
+    "stick_speed_m_s": 0.15,
+    "wheel_reverse_lock_speed_m_s": 1.5
+  }
+}

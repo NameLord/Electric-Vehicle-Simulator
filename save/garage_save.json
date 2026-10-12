@@ -1,0 +1,261 @@
+{
+  "_about": "EV-Simulator garage presets. Each entry is a complete vehicle config in the same schema as config/vehicle.json, plus a 'build' section (chemistry/S/P/motor_id) and a cosmetic 'style' section. Add a preset by copying an existing entry and renaming the key.",
+  "presets": {
+    "eco city": {
+      "_about": "Chassis / tire / drivetrain / steering parameters for the two-track vehicle model. Everything the Vehicle physics uses comes from here so that no magic numbers live in code.",
+      "build": {
+        "chemistry": "LiFePO4",
+        "motor_id": "pmsm-50kw",
+        "parallel": 4,
+        "series": 96
+      },
+      "chassis": {
+        "air_density_kg_m3": 1.225,
+        "cg_height_m": 0.45,
+        "cg_to_front_axle_m": 1.1342592592592595,
+        "cg_to_rear_axle_m": 1.3157407407407407,
+        "drag_coefficient": 0.28,
+        "frontal_area_m2": 2.0,
+        "mass_kg": 1100.0,
+        "track_width_front_m": 1.45,
+        "track_width_rear_m": 1.45,
+        "weight_distribution_front_pct": 53.7037037037037,
+        "wheelbase_m": 2.45,
+        "yaw_inertia_kg_m2": 1500.0
+      },
+      "drivetrain": {
+        "final_drive_efficiency": 0.94,
+        "gear_ratio": 8.5,
+        "max_friction_brake_torque_Nm_per_wheel": 1400.0,
+        "traction_control": true,
+        "traction_control_engage_slip": 0.18,
+        "traction_control_min_scale": 0.2,
+        "traction_control_recovery_rate": 0.02,
+        "traction_control_release_hold": 5,
+        "traction_control_release_slip": 0.08,
+        "traction_control_slip_target": 0.15
+      },
+      "physics": {
+        "ambient_temp_C": 25.0,
+        "soc_floor": 0.05,
+        "stick_speed_m_s": 0.15,
+        "substep_hz": 120.0,
+        "wheel_reverse_lock_speed_m_s": 1.5,
+        "wheel_substeps": 16
+      },
+      "steering": {
+        "max_steer_angle_rad": 0.52,
+        "speed_sensitive_min_factor": 0.35,
+        "speed_sensitive_ref_m_s": 22.0,
+        "steer_rate_rad_s": 3.5
+      },
+      "style": {
+        "body_length_m": 3.6,
+        "body_width_m": 1.72,
+        "color": "Racing Green",
+        "tire_width_mm": 195
+      },
+      "tires": {
+        "_todo": "Stiffness values are Pacejka-linearised placeholders; verify on a skidpad or replace with a full Pacejka model. sliding_slip_threshold is the combined-slip magnitude that counts as sliding; below low_speed_sliding_kmh the threshold rises to catastrophic_slip_threshold so slow manoeuvring cannot false-trigger.",
+        "catastrophic_slip_threshold": 0.5,
+        "cornering_stiffness_N_per_rad": 35000.0,
+        "fz_reference_N": 3000.0,
+        "handbrake_lat_mu_factor": 0.4,
+        "load_sensitivity_per_kN": 0.035,
+        "longitudinal_stiffness_N_per_slip": 50000.0,
+        "low_speed_sliding_kmh": 10.0,
+        "mu_base": 1.1,
+        "mu_min": 0.35,
+        "rear_long_grip_bias": 1.0,
+        "sliding_slip_threshold": 0.2,
+        "slip_eps_m_s": 0.5,
+        "slip_ratio_limit": 1.0
+      },
+      "wheels": {
+        "_todo": "front_brake_bias is the static fallback used when brake_distribution is 'fixed'. With 'dynamic' the pedal is split in proportion to axle load (EBD) and the total is capped at max_brake_grip_utilisation of the tire grip budget, so the friction brakes can never lock the wheels. The handbrake is deliberately not capped.",
+        "brake_distribution": "dynamic",
+        "count": 4,
+        "driven_axle": "front",
+        "front_brake_bias": 0.62,
+        "handbrake_torque_Nm_per_wheel": 1600.0,
+        "inertia_kg_m2": 1.4,
+        "max_brake_grip_utilisation": 0.92,
+        "max_front_brake_bias": 0.85,
+        "min_front_brake_bias": 0.45,
+        "radius_m": 0.31,
+        "rolling_resistance_coeff": 0.009
+      }
+    },
+    "stock demo": {
+      "_about": "Chassis / tire / drivetrain / steering parameters for the two-track vehicle model. Everything the Vehicle physics uses comes from here so that no magic numbers live in code.",
+      "build": {
+        "chemistry": "Li-Ion (NMC)",
+        "motor_id": "pmsm-150kw",
+        "parallel": 3,
+        "series": 92
+      },
+      "chassis": {
+        "air_density_kg_m3": 1.225,
+        "cg_height_m": 0.52,
+        "cg_to_front_axle_m": 1.2500000000000002,
+        "cg_to_rear_axle_m": 1.45,
+        "drag_coefficient": 0.3,
+        "frontal_area_m2": 2.2,
+        "mass_kg": 1250.0,
+        "track_width_front_m": 1.55,
+        "track_width_rear_m": 1.55,
+        "weight_distribution_front_pct": 53.7037037037037,
+        "wheelbase_m": 2.7,
+        "yaw_inertia_kg_m2": 2100.0
+      },
+      "drivetrain": {
+        "final_drive_efficiency": 0.94,
+        "gear_ratio": 9.0,
+        "max_friction_brake_torque_Nm_per_wheel": 1400.0,
+        "traction_control": true,
+        "traction_control_engage_slip": 0.18,
+        "traction_control_min_scale": 0.2,
+        "traction_control_recovery_rate": 0.02,
+        "traction_control_release_hold": 5,
+        "traction_control_release_slip": 0.08,
+        "traction_control_slip_target": 0.15
+      },
+      "physics": {
+        "ambient_temp_C": 25.0,
+        "soc_floor": 0.05,
+        "stick_speed_m_s": 0.15,
+        "substep_hz": 120.0,
+        "wheel_reverse_lock_speed_m_s": 1.5,
+        "wheel_substeps": 16
+      },
+      "steering": {
+        "max_steer_angle_rad": 0.52,
+        "speed_sensitive_min_factor": 0.35,
+        "speed_sensitive_ref_m_s": 22.0,
+        "steer_rate_rad_s": 3.5
+      },
+      "style": {
+        "body_length_m": 3.4000000000000004,
+        "body_width_m": 1.9100000000000001,
+        "color": "Azure",
+        "tire_width_mm": 225
+      },
+      "tires": {
+        "_todo": "Stiffness values are Pacejka-linearised placeholders; verify on a skidpad or replace with a full Pacejka model. sliding_slip_threshold is the combined-slip magnitude that counts as sliding; below low_speed_sliding_kmh the threshold rises to catastrophic_slip_threshold so slow manoeuvring cannot false-trigger.",
+        "catastrophic_slip_threshold": 0.5,
+        "cornering_stiffness_N_per_rad": 35000.0,
+        "fz_reference_N": 3000.0,
+        "handbrake_lat_mu_factor": 0.4,
+        "load_sensitivity_per_kN": 0.035,
+        "longitudinal_stiffness_N_per_slip": 50000.0,
+        "low_speed_sliding_kmh": 10.0,
+        "mu_base": 1.05,
+        "mu_min": 0.35,
+        "rear_long_grip_bias": 1.0,
+        "sliding_slip_threshold": 0.2,
+        "slip_eps_m_s": 0.5,
+        "slip_ratio_limit": 1.0
+      },
+      "wheels": {
+        "_todo": "front_brake_bias is the static fallback used when brake_distribution is 'fixed'. With 'dynamic' the pedal is split in proportion to axle load (EBD) and the total is capped at max_brake_grip_utilisation of the tire grip budget, so the friction brakes can never lock the wheels. The handbrake is deliberately not capped.",
+        "brake_distribution": "dynamic",
+        "count": 4,
+        "driven_axle": "rear",
+        "front_brake_bias": 0.62,
+        "handbrake_torque_Nm_per_wheel": 1600.0,
+        "inertia_kg_m2": 1.4,
+        "max_brake_grip_utilisation": 0.92,
+        "max_front_brake_bias": 0.85,
+        "min_front_brake_bias": 0.45,
+        "radius_m": 0.31,
+        "rolling_resistance_coeff": 0.012
+      }
+    },
+    "track weapon": {
+      "_about": "Chassis / tire / drivetrain / steering parameters for the two-track vehicle model. Everything the Vehicle physics uses comes from here so that no magic numbers live in code.",
+      "build": {
+        "chemistry": "Li-Ion (NMC)",
+        "motor_id": "pmsm-335kw",
+        "parallel": 5,
+        "series": 96
+      },
+      "chassis": {
+        "air_density_kg_m3": 1.225,
+        "cg_height_m": 0.38,
+        "cg_to_front_axle_m": 1.4580000000000002,
+        "cg_to_rear_axle_m": 1.242,
+        "drag_coefficient": 0.42,
+        "frontal_area_m2": 2.4,
+        "mass_kg": 1050.0,
+        "track_width_front_m": 1.55,
+        "track_width_rear_m": 1.55,
+        "weight_distribution_front_pct": 46.0,
+        "wheelbase_m": 2.7,
+        "yaw_inertia_kg_m2": 2100.0
+      },
+      "drivetrain": {
+        "final_drive_efficiency": 0.94,
+        "gear_ratio": 10.5,
+        "max_friction_brake_torque_Nm_per_wheel": 2200.0,
+        "traction_control": true,
+        "traction_control_engage_slip": 0.18,
+        "traction_control_min_scale": 0.2,
+        "traction_control_recovery_rate": 0.02,
+        "traction_control_release_hold": 5,
+        "traction_control_release_slip": 0.08,
+        "traction_control_slip_target": 0.15
+      },
+      "physics": {
+        "ambient_temp_C": 25.0,
+        "soc_floor": 0.05,
+        "stick_speed_m_s": 0.15,
+        "substep_hz": 120.0,
+        "wheel_reverse_lock_speed_m_s": 1.5,
+        "wheel_substeps": 16
+      },
+      "steering": {
+        "max_steer_angle_rad": 0.52,
+        "speed_sensitive_min_factor": 0.35,
+        "speed_sensitive_ref_m_s": 22.0,
+        "steer_rate_rad_s": 3.5
+      },
+      "style": {
+        "body_length_m": 4.4,
+        "body_width_m": 2.0,
+        "color": "Crimson",
+        "tire_width_mm": 305
+      },
+      "tires": {
+        "_todo": "Stiffness values are Pacejka-linearised placeholders; verify on a skidpad or replace with a full Pacejka model. sliding_slip_threshold is the combined-slip magnitude that counts as sliding; below low_speed_sliding_kmh the threshold rises to catastrophic_slip_threshold so slow manoeuvring cannot false-trigger.",
+        "catastrophic_slip_threshold": 0.5,
+        "cornering_stiffness_N_per_rad": 55000.0,
+        "fz_reference_N": 3000.0,
+        "handbrake_lat_mu_factor": 0.4,
+        "load_sensitivity_per_kN": 0.035,
+        "longitudinal_stiffness_N_per_slip": 80000.0,
+        "low_speed_sliding_kmh": 10.0,
+        "mu_base": 1.45,
+        "mu_min": 0.35,
+        "rear_long_grip_bias": 1.0,
+        "sliding_slip_threshold": 0.2,
+        "slip_eps_m_s": 0.5,
+        "slip_ratio_limit": 1.0
+      },
+      "wheels": {
+        "_todo": "front_brake_bias is the static fallback used when brake_distribution is 'fixed'. With 'dynamic' the pedal is split in proportion to axle load (EBD) and the total is capped at max_brake_grip_utilisation of the tire grip budget, so the friction brakes can never lock the wheels. The handbrake is deliberately not capped.",
+        "brake_distribution": "dynamic",
+        "count": 4,
+        "driven_axle": "all",
+        "front_brake_bias": 0.62,
+        "handbrake_torque_Nm_per_wheel": 1600.0,
+        "inertia_kg_m2": 1.4,
+        "max_brake_grip_utilisation": 0.92,
+        "max_front_brake_bias": 0.85,
+        "min_front_brake_bias": 0.45,
+        "radius_m": 0.31,
+        "rolling_resistance_coeff": 0.013
+      }
+    }
+  },
+  "version": 1
+}
